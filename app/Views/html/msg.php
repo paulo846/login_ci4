@@ -37,8 +37,10 @@
             <button type="submit" class="btn btn-dark">Enviar teste</button>
         </form>
 
-
-        <?= $msg ?>
+<pre>
+    <?php  print_r($msg) ?>
+</pre>
+        
     </div>
 
     <script>
