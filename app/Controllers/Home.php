@@ -104,7 +104,8 @@ class Home extends BaseController
 
         // Simulação de cobranças
         $cobrancas = array(
-            "fulano@example.com" => true,  // Tem cobrança para Fulano
+            "fulano@example.com"  => true,  // Tem cobrança para Fulano
+            "ciclano@example.com" => true,  // Tem cobrança para Ciclano
             // Adicione mais cobranças conforme necessário
         );
 
