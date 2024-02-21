@@ -10,7 +10,7 @@ class Home extends BaseController
 
     public function index(): string
     {
-        return view('html/home');
+        return view('html/Home');
     }
 
     public function google()
