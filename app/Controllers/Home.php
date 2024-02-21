@@ -131,6 +131,6 @@ class Home extends BaseController
             $mensagem = false;
         }
 
-        return view('html/msg', $mensagem);
+        return view('html/msg', ['msg' => $mensagem]);
     }
 }
