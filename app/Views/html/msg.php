@@ -37,13 +37,14 @@
             <button type="submit" class="btn btn-dark">Enviar teste</button>
         </form>
 
-<pre>
-    <?php foreach($msg as $l) : 
-        echo $l . '<br>';
-    endforeach ; ?>
+
+<code>
+<?php foreach($msg as $l) : 
+echo $l . "\n";
+endforeach ; ?>
+</code>
 
     <!-- <?php  print_r($msg) ?> -->
-</pre>
         
     </div>
 
