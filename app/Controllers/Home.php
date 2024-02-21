@@ -55,9 +55,10 @@ class Home extends BaseController
         if ($code) {
             // Troque o código de autorização por tokens de acesso
             //echo $code ;
-            $accessToken = $client->fetchAccessTokenWithAuthCode([$code]);
+            $accessToken = $client;
 
-            var_dump($accessToken);
+            echo "<pre>";
+            print_r($accessToken);
 
         }
     }
