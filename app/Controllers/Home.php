@@ -80,11 +80,14 @@ class Home extends BaseController
                 // Agora você pode acessar as informações do usuário, como o email
                 $email = $userInfo->getEmail();
 
+                echo "<pre>";
+                print_r($userInfo);
+
                 // Faça o que for necessário com as informações do usuário
                 // Por exemplo, autentique o usuário em seu sistema
 
                 // Exemplo de como imprimir o e-mail do usuário
-                echo "E-mail do usuário: " . $email;
+                //echo "E-mail do usuário: " . $email;
             } else {
                 // Houve um erro ao obter os tokens de acesso
                 // Trate o erro conforme necessário
