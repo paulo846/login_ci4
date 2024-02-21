@@ -98,6 +98,7 @@ class Home extends BaseController
 
     public function msg()
     {
+        $msg = array();
         if ($this->request->getVar('msg')) {
 
             // Supondo que você tenha recuperado os dados do banco de dados em um array chamado $clientes
@@ -127,13 +128,15 @@ class Home extends BaseController
                     // Substitua as marcações pelos valores dinâmicos
                     $mensagem = str_replace("{nome}", $nome, $texto);
                     $mensagem = str_replace("{email}", $email, $mensagem);
+
+                    $msg[] = $mensagem;
                     //echo $mensagem . '<br>';
                 }
             }
         } else {
-            $mensagem = false;
+            $msg[] = [];
         }
 
-        return view('html/msg', ['msg' => $mensagem]);
+        return view('html/msg', ['msg' => $msg]);
     }
 }
