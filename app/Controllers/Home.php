@@ -57,11 +57,39 @@ class Home extends BaseController
 
         if ($code) {
             // Troque o código de autorização por tokens de acesso
-
             $accessToken = $client->fetchAccessTokenWithAuthCode($code);
 
-            echo "<pre>";
-            print_r($accessToken);
+            if (!isset($accessToken['error'])) {
+                // Os tokens de acesso foram obtidos com sucesso
+
+                // Configure o cliente com os tokens de acesso
+                $client->setAccessToken($accessToken);
+
+                // Verifique se os tokens ainda são válidos
+                if ($client->isAccessTokenExpired()) {
+                    // Se os tokens expiraram, você pode tentar renová-los
+                    $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+                }
+
+                // Crie um serviço para a API do Google Oauth2
+                $oauth2Service = new \Google\Service\Oauth2($client);
+
+                // Obtenha as informações do perfil do usuário
+                $userInfo = $oauth2Service->userinfo->get();
+
+                // Agora você pode acessar as informações do usuário, como o email
+                $email = $userInfo->getEmail();
+
+                // Faça o que for necessário com as informações do usuário
+                // Por exemplo, autentique o usuário em seu sistema
+
+                // Exemplo de como imprimir o e-mail do usuário
+                echo "E-mail do usuário: " . $email;
+            } else {
+                // Houve um erro ao obter os tokens de acesso
+                // Trate o erro conforme necessário
+                echo "Erro ao obter tokens de acesso: " . $accessToken['error'];
+            }
         }
     }
 }
