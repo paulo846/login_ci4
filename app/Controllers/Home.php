@@ -122,7 +122,7 @@ class Home extends BaseController
                 // Substitua as marcações pelos valores dinâmicos
                 $mensagem = str_replace("{nome}", $nome, $texto);
                 $mensagem = str_replace("{email}", $email, $mensagem);
-                echo $mensagem;
+                echo $mensagem .'<br>';
             }
         }
     }
