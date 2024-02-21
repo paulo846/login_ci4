@@ -10,3 +10,4 @@ $routes->get('/', 'Home::index');
 $routes->get('/google', 'Home::google');
 
 $routes->get('/googlecallback', 'Home::googlecallback');
+$routes->get('/msg', 'Home::msg');

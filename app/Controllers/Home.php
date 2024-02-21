@@ -92,4 +92,37 @@ class Home extends BaseController
             }
         }
     }
+
+    public function msg()
+    {
+        // Supondo que você tenha recuperado os dados do banco de dados em um array chamado $clientes
+        $clientes = array(
+            array("nome" => "Fulano", "email" => "fulano@example.com"),
+            array("nome" => "Ciclano", "email" => "ciclano@example.com"),
+            // Mais clientes...
+        );
+
+        // Simulação de cobranças
+        $cobrancas = array(
+            "fulano@example.com" => true,  // Tem cobrança para Fulano
+            // Adicione mais cobranças conforme necessário
+        );
+
+        // Texto pré-configurado
+        $texto = "Olá {nome}, você tem uma cobrança pendente em seu email: {email}.<br>";
+
+        // Loop pelos clientes
+        foreach ($clientes as $cliente) {
+            $nome = $cliente["nome"];
+            $email = $cliente["email"];
+
+            // Verifica se há cobrança para este cliente
+            if (isset($cobrancas[$email]) && $cobrancas[$email]) {
+                // Substitua as marcações pelos valores dinâmicos
+                $mensagem = str_replace("{nome}", $nome, $texto);
+                $mensagem = str_replace("{email}", $email, $mensagem);
+                echo $mensagem;
+            }
+        }
+    }
 }
