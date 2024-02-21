@@ -16,6 +16,9 @@
             align-items: center;
             justify-content: center;
         }
+        .container{
+            display: block;
+        }
     </style>
 </head>
 
@@ -28,10 +31,12 @@
             <textarea id="texto" name="msg" class="form-control" cols="50" rows="10"></textarea><br>
 
             <!-- Marcadores com estilo Bootstrap -->
-            <button class="btn btn-primary" onclick="inserirMarcacao('{nome}')">{nome}</button>
-            <button class="btn btn-primary" onclick="inserirMarcacao('{email}')">{email}</button>
+            <button class="btn btn-primary" type="button" onclick="inserirMarcacao('{nome}')">{nome}</button>
+            <button class="btn btn-primary" type="button" onclick="inserirMarcacao('{email}')">{email}</button>
 
+            <button type="submit" class="btn btn-dark">Enviar teste</button>
         </form>
+
 
         <?= $msg ?>
     </div>
