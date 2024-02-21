@@ -39,9 +39,13 @@
 
 
 <code>
-<?php foreach($msg as $l) : 
+<?php 
+if(count($msg)):
+foreach($msg as $l) : 
 echo $l . "\n <br>";
-endforeach ; ?>
+endforeach ;
+endif;
+?>
 </code>
 
     <!-- <?php  print_r($msg) ?> -->
