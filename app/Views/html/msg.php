@@ -38,7 +38,11 @@
         </form>
 
 <pre>
-    <?php  print_r($msg) ?>
+    <?php foreach($msg as $l) : 
+        echo $l . '<br>';
+    endforeach ; ?>
+
+    <!-- <?php  print_r($msg) ?> -->
 </pre>
         
     </div>
