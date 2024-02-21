@@ -40,7 +40,7 @@
 
 <code>
 <?php foreach($msg as $l) : 
-echo $l . "\n";
+echo $l . "\n <br>";
 endforeach ; ?>
 </code>
 
