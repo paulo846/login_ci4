@@ -20,7 +20,7 @@ class Home extends BaseController
 
         $client->setClientId("9927015839-rl2frbasu89489ik084u4c82im6h5etl.apps.googleusercontent.com");
         $client->setClientSecret("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");
-        $client->setRedirectUri(site_url('googlecallback'));
+        $client->setRedirectUri('https://login.multidesk.io/googlecallback');
 
         $client->addScope("email");
         $client->addScope("profile");
@@ -48,7 +48,7 @@ class Home extends BaseController
 
         $client->setClientId("9927015839-rl2frbasu89489ik084u4c82im6h5etl.apps.googleusercontent.com");
         $client->setClientSecret("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");
-        $client->setRedirectUri(site_url('googlecallback'));
+        $client->setRedirectUri('https://login.multidesk.io/googlecallback');
 
         $code = $this->request->getVar('code');
 
