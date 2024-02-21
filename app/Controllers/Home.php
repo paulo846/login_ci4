@@ -95,35 +95,42 @@ class Home extends BaseController
 
     public function msg()
     {
-        // Supondo que você tenha recuperado os dados do banco de dados em um array chamado $clientes
-        $clientes = array(
-            array("nome" => "Fulano", "email" => "fulano@example.com"),
-            array("nome" => "Ciclano", "email" => "ciclano@example.com"),
-            // Mais clientes...
-        );
+        if ($this->request->getVar('msg')) {
 
-        // Simulação de cobranças
-        $cobrancas = array(
-            "fulano@example.com"  => true,  // Tem cobrança para Fulano
-            "ciclano@example.com" => true,  // Tem cobrança para Ciclano
-            // Adicione mais cobranças conforme necessário
-        );
+            // Supondo que você tenha recuperado os dados do banco de dados em um array chamado $clientes
+            $clientes = array(
+                array("nome" => "Fulano", "email" => "fulano@example.com"),
+                array("nome" => "Ciclano", "email" => "ciclano@example.com"),
+                // Mais clientes...
+            );
 
-        // Texto pré-configurado
-        $texto = "Olá {nome}, você tem uma cobrança pendente em seu email: {email}.<br>";
+            // Simulação de cobranças
+            $cobrancas = array(
+                "fulano@example.com"  => true,  // Tem cobrança para Fulano
+                "ciclano@example.com" => true,  // Tem cobrança para Ciclano
+                // Adicione mais cobranças conforme necessário
+            );
 
-        // Loop pelos clientes
-        foreach ($clientes as $cliente) {
-            $nome = $cliente["nome"];
-            $email = $cliente["email"];
+            // Texto pré-configurado
+            $texto = $this->request->getVar('msg');
 
-            // Verifica se há cobrança para este cliente
-            if (isset($cobrancas[$email]) && $cobrancas[$email]) {
-                // Substitua as marcações pelos valores dinâmicos
-                $mensagem = str_replace("{nome}", $nome, $texto);
-                $mensagem = str_replace("{email}", $email, $mensagem);
-                echo $mensagem .'<br>';
+            // Loop pelos clientes
+            foreach ($clientes as $cliente) {
+                $nome = $cliente["nome"];
+                $email = $cliente["email"];
+
+                // Verifica se há cobrança para este cliente
+                if (isset($cobrancas[$email]) && $cobrancas[$email]) {
+                    // Substitua as marcações pelos valores dinâmicos
+                    $mensagem = str_replace("{nome}", $nome, $texto);
+                    $mensagem = str_replace("{email}", $email, $mensagem);
+                    echo $mensagem . '<br>';
+                }
             }
+        } else {
+            $mensagem = false;
         }
+
+        return view('html/msg', $mensagem);
     }
 }
