@@ -49,17 +49,19 @@ class Home extends BaseController
         $client->setClientId("9927015839-rl2frbasu89489ik084u4c82im6h5etl.apps.googleusercontent.com");
         $client->setClientSecret("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");
         $client->setRedirectUri('https://login.multidesk.io/googlecallback');
+        $client->addScope('openid');
+        $client->addScope('profile');
+        $client->addScope('email');
 
         $code = $this->request->getVar('code');
 
         if ($code) {
             // Troque o código de autorização por tokens de acesso
-            
+
             $accessToken = $client->fetchAccessTokenWithAuthCode($code);
 
             echo "<pre>";
             print_r($accessToken);
-
         }
     }
 }
